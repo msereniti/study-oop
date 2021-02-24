@@ -1,7 +1,11 @@
 #include "./application.h"
+#include "./number.h"
+#include <iostream>
 
 int main() {
-    Application* application = new Application();
+  Application *application = new Application();
 
-    application->showCommandsList();
+  application->startInteractive();
+
+  delete application;
 }
