@@ -44,8 +44,13 @@ public:
     return result;
   }
   const char *toStringCanonical() {
+    PolynomialRoots roots = this->getRoots();
+    if (roots.NaN) {
+      return "real roots are not available\n";
+    }
     char result[10000] = {'\0'};
-    sprintf(result, "%d*x^2 + %d*x + %d = 0\n", this->a, this->b, this->c);
+    sprintf(result, "%d * (x - %d)(x - %d)\n", this->a, roots.major,
+            roots.minor);
     return result;
   }
 
