@@ -32,7 +32,7 @@ void Application::startInteractive() {
     } else if (userInput == 1) {
       PolynomialRoots roots = polynomial->getRoots();
       if (roots.NaN) {
-        std::cout << "Polynomial has no real roots\n";
+        std::cout << "Polynomial has no integer roots\n";
       } else {
         std::cout << "Roots: " << roots.minor << ", " << roots.major << "\n";
       }

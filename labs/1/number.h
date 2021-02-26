@@ -2,6 +2,6 @@
 #ifndef NUMBER
 #define NUMBER
 
-typedef double number;
+typedef int number;
 
 #endif

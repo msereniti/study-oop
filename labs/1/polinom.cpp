@@ -15,14 +15,22 @@ void Polinom::setB(number value) { this->b = value; };
 void Polinom::setC(number value) { this->c = value; };
 PolynomialRoots Polinom::getRoots() {
   PolynomialRoots roots;
+  roots.NaN = false;
 
   number discriminant = std::pow(this->b, 2) - 4 * this->a * this->c;
 
   if (discriminant >= 0) {
     roots.major = (-this->b + std::sqrt(discriminant)) / (2 * this->a);
     roots.minor = (-this->b - std::sqrt(discriminant)) / (2 * this->a);
+
+    if (roots.major + roots.minor == -this->b * this->a &&
+        roots.major * roots.minor == this->c / this->a) {
+      roots.NaN = true;
+    }
   }
-  roots.NaN = discriminant < 0;
+  if (discriminant < 0) {
+    roots.NaN = true;
+  }
 
   return roots;
 }
