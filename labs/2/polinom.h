@@ -22,8 +22,8 @@ public:
   void setC(number value);
   PolynomialRoots getRoots();
   number resolve(number x);
-  const char *toString();
-  const char *toStringCanonical();
+  void print();
+  void printCanonical();
 
   Polinom();
 };

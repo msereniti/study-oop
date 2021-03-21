@@ -1,7 +1,8 @@
 #include "number.h"
-#include <math.h>
+#include <cmath>
 #include <stdio.h>
 
+#include "fract.h"
 #include "polinom.h"
 
 using namespace std;
@@ -19,7 +20,8 @@ PolynomialRoots Polinom::getRoots() {
   PolynomialRoots roots;
   roots.NaN = false;
 
-  number discriminant = (this->b * this->b)  - this->a * this->c * 4;
+  number discriminant = (this->b * this->b) - this->a * this->c * 4;
+
   if (discriminant >= 0) {
     roots.major = (-this->b + sqrt(discriminant)) / (this->a * 2);
     roots.minor = (-this->b - sqrt(discriminant)) / (this->a * 2);
@@ -38,17 +40,16 @@ PolynomialRoots Polinom::getRoots() {
 number Polinom::resolve(number x) {
   return this->a + (x * x) + this->b * x + this->c;
 }
-const char *Polinom::toString() {
+void Polinom::print() {
   char result[10000] = {'\0'};
-  cout<<"p(x) ="<<a<<"*x^2 +"<<b<<"*x +"<<c;
-  return result;
+  cout << "p(x) =" << a << "*x^2 +" << b << "*x +" << c;
 }
-const char *Polinom::toStringCanonical() {
+void Polinom::printCanonical() {
   PolynomialRoots roots = this->getRoots();
   if (roots.NaN) {
-    return "real roots are not available\n";
+    std::cout << "real roots are not available\n";
   }
   char result[10000] = {'\0'};
-  cout<<a<<" * (x - "<<b<<")(x - "<<c<<")"<<endl;
-  return result;
+  cout << a << " * (" << roots.major << " - " << b << ")(" << roots.minor
+       << " - " << c << ")" << endl;
 }
