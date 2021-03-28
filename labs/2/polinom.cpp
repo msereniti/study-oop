@@ -1,5 +1,6 @@
 #include "number.h"
 #include <cmath>
+#include <sstream>
 #include <stdio.h>
 
 #include "fract.h"
@@ -40,16 +41,19 @@ PolynomialRoots Polinom::getRoots() {
 number Polinom::resolve(number x) {
   return this->a + (x * x) + this->b * x + this->c;
 }
-void Polinom::print() {
-  char result[10000] = {'\0'};
-  cout << "p(x) =" << a << "*x^2 +" << b << "*x +" << c;
+std::string Polinom::toString() {
+  stringstream ss;
+  ss << "p(x) =" << a << "*x^2 +" << b << "*x +" << c;
+  return ss.str();
 }
-void Polinom::printCanonical() {
+std::string Polinom::toStringCanonical() {
   PolynomialRoots roots = this->getRoots();
+  stringstream ss;
   if (roots.NaN) {
-    std::cout << "real roots are not available\n";
+    ss << "real roots are not available";
+  } else {
+    ss << a << " * (" << roots.major << " - " << b << ")(" << roots.minor
+       << " - " << c << ")";
   }
-  char result[10000] = {'\0'};
-  cout << a << " * (" << roots.major << " - " << b << ")(" << roots.minor
-       << " - " << c << ")" << endl;
+  return ss.str();
 }

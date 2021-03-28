@@ -22,8 +22,8 @@ public:
   void setC(number value);
   PolynomialRoots getRoots();
   number resolve(number x);
-  void print();
-  void printCanonical();
+  std::string toString();
+  std::string toStringCanonical();
 
   Polinom();
 };

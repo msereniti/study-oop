@@ -43,11 +43,11 @@ void Application::startInteractive() {
       std::cout << "Result: " << polynomial->resolve(x) << "\n";
     } else if (userInput == 3) {
       std::cout << "\n";
-      polynomial->print();
+      std::cout << polynomial->toString() << "\n";
       std::cout << "\n";
     } else if (userInput == 4) {
       std::cout << "\n";
-      polynomial->printCanonical();
+      std::cout << polynomial->toStringCanonical() << "\n";
       std::cout << "\n";
     }
     std::cout << "\n";
