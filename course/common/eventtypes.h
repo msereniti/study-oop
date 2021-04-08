@@ -4,26 +4,23 @@
 #include "paramdata.h"
 #include "statedata.h"
 
-enum EEvents
-{
-    CLIENTNO = 1,
-    PARAMREQUEST,
-    PARAMMESSAGE,
-    STATEREQUEST,
-    STATEMESSAGE,
-    RESET,
-    TACT,
+enum EEvents {
+  CLIENTNO = 1,
+  PARAMREQUEST,
+  PARAMMESSAGE,
+  STATEREQUEST,
+  STATEMESSAGE,
+  RESET,
+  TACT,
 };
 
-struct TEvents
-{
-    EEvents type;
-    union
-    {
-        int         no;
-        TParamData  p;
-        TStateData  s;
-    }   data;
+struct TEvents {
+  EEvents type;
+  union {
+    int no;
+    TParamData p;
+    TStateData s;
+  } data;
 };
 
 #endif // EVENTTYPES_H

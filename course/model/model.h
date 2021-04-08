@@ -6,25 +6,23 @@
 #include "paramdata.h"
 #include "statedata.h"
 
-class TModel
-{
-    //параметры
-    static TParamData defaultParameters;
-    TParamData parameters;
+class TModel {
+  //параметры
+  static TParamData defaultParameters;
+  TParamData parameters;
 
-    //состояние
-    static TStateData defaultState;
-    TStateData state;
+  //состояние
+  static TStateData defaultState;
+  TStateData state;
 
 public:
-    TModel();
+  TModel();
 
-    void init();
-    void tact();
+  void init();
+  void tact();
 
-    inline TParamData& params() { return parameters; }
-    inline TStateData& states() { return state; }
-
+  inline TParamData &params() { return parameters; }
+  inline TStateData &states() { return state; }
 };
 
 #endif // MODEL_H

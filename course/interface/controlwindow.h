@@ -1,35 +1,34 @@
 #ifndef CONTROLWINDOW_H
 #define CONTROLWINDOW_H
 
-#include <QWidget>
 #include <QCloseEvent>
 #include <QPushButton>
+#include <QWidget>
 
-class TControlWindow : public QWidget
-{
-Q_OBJECT
+class TControlWindow : public QWidget {
+  Q_OBJECT
 
-    QPushButton *b1;
-    QPushButton *b2;
-    QPushButton *b3;
+  QPushButton *b1;
+  QPushButton *b2;
+  QPushButton *b3;
 
 public:
-    TControlWindow(bool,QWidget *parent = 0);
-    ~TControlWindow();
+  TControlWindow(bool, QWidget *parent = 0);
+  ~TControlWindow();
 
-    inline void setEnable(const bool m) { setEnabled(m); }
+  inline void setEnable(const bool m) { setEnabled(m); }
 
 protected:
-    void closeEvent(QCloseEvent*);
+  void closeEvent(QCloseEvent *);
 
 private slots:
-    void switchMode();
+  void switchMode();
 
 signals:
-    void closing();
-    void reset();
-    void step();
-    void mode(bool);
+  void closing();
+  void reset();
+  void step();
+  void mode(bool);
 };
 
 #endif // CONTROLWINDOW_H

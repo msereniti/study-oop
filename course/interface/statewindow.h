@@ -1,33 +1,32 @@
 #ifndef STATEWINDOW_H
 #define STATEWINDOW_H
 
-#include <QWidget>
 #include <QCloseEvent>
 #include <QLabel>
+#include <QWidget>
 
 #include "statedata.h"
 
-class TStateWindow : public QWidget
-{
-Q_OBJECT
+class TStateWindow : public QWidget {
+  Q_OBJECT
 
-    QLabel *l4;
-    QLabel *l5;
-    QLabel *state1;
-    QLabel *l7;
-    QLabel *state2;
+  QLabel *l4;
+  QLabel *l5;
+  QLabel *state1;
+  QLabel *l7;
+  QLabel *state2;
 
 public:
-    TStateWindow(QWidget *parent = 0);
-    ~TStateWindow();
+  TStateWindow(QWidget *parent = 0);
+  ~TStateWindow();
 
-    void setCurrentState(const TStateData);
+  void setCurrentState(const TStateData);
 
 protected:
-    void closeEvent(QCloseEvent*);
+  void closeEvent(QCloseEvent *);
 
 signals:
-    void closing();
+  void closing();
 };
 
 #endif // STATEWINDOW_H

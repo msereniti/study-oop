@@ -4,11 +4,10 @@
 #include <QObject>
 #include <QTimer>
 
-class TEventGenerator : public QTimer
-{
-Q_OBJECT
+class TEventGenerator : public QTimer {
+  Q_OBJECT
 public:
-    TEventGenerator(int=1000);
+  TEventGenerator(int = 1000);
 };
 
 #endif // GENERATOR_H
