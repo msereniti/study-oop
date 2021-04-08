@@ -3,11 +3,10 @@
 
 #include <QObject>
 
-struct TParamData
-{
-    quint32 m;
-    qint32 p1;
-    qint32 p2;
+struct TParamData {
+  quint32 slotsCount_n;
+  qint32 maxQueue_m;
+  qint32 handlingTime;
 };
 
 #endif // PARAMDATA_H
