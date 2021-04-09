@@ -6,7 +6,7 @@ TTcpServer::TTcpServer(quint16 port) : QTcpServer() {
   listen(QHostAddress::Any, port);
   connect((QTcpServer *)this, SIGNAL(newConnection()), this,
           SLOT(connection()));
-  qDebug() << "listen port" << port << isListening();
+  qDebug() << "listen port" << port << isListening() << "\n";
 }
 
 TTcpServer::~TTcpServer() {

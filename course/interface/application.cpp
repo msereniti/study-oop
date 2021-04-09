@@ -14,6 +14,7 @@ TApplication::TApplication(int argc, char **argv) : QApplication(argc, argv) {
           SLOT(toModel(EEvents, void *)));
   connect(interface, SIGNAL(reset()), this, SLOT(reset()));
   connect(interface, SIGNAL(step()), this, SLOT(step()));
+  connect(interface, SIGNAL(addPassenger()), this, SLOT(addPassenger()));
   connect(interface, SIGNAL(mode(bool)), this, SLOT(mode(bool)));
   interface->show();
   generator = new TEventGenerator();
@@ -37,6 +38,7 @@ void TApplication::toModel(EEvents e, void *d) {
   case PARAMREQUEST:
   case STATEREQUEST:
   case RESET:
+  case ADD_PASSENGER:
   case TACT:
     msg.append(msgLen, ' ');
     memcpy(msg.data(), &msgData, msgLen);
@@ -102,9 +104,14 @@ void TApplication::step() {
   toModel(TACT, nullptr);
 }
 
-void TApplication::mode(bool m) {
-  qDebug() << "mode" << m;
-  if (m)
+void TApplication::addPassenger() {
+  qDebug() << "addPassenger";
+  toModel(ADD_PASSENGER, nullptr);
+}
+
+void TApplication::mode(bool readlTimeMode) {
+  qDebug() << "mode" << readlTimeMode;
+  if (readlTimeMode)
     generator->start();
   else
     generator->stop();

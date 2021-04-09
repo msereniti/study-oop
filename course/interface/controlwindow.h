@@ -8,15 +8,16 @@
 class TControlWindow : public QWidget {
   Q_OBJECT
 
-  QPushButton *b1;
-  QPushButton *b2;
-  QPushButton *b3;
+  QPushButton *resetBtn;
+  QPushButton *nextStepBtn;
+  QPushButton *addPassengerBtn;
+  QPushButton *realTimeBtn;
 
 public:
   TControlWindow(bool, QWidget *parent = 0);
   ~TControlWindow();
 
-  inline void setEnable(const bool m) { setEnabled(m); }
+  inline void setEnable(const bool realTimeMode) { setEnabled(realTimeMode); }
 
 protected:
   void closeEvent(QCloseEvent *);
@@ -28,6 +29,7 @@ signals:
   void closing();
   void reset();
   void step();
+  void addPassenger();
   void mode(bool);
 };
 

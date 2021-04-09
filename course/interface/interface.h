@@ -51,6 +51,7 @@ signals:
   void sendModelParams(TParamData);
   void reset();
   void step();
+  void addPassenger();
   void mode(bool);
 };
 

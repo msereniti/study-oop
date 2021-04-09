@@ -92,6 +92,13 @@ void TApplication::clientRequest(int no, QByteArray m) {
     if (formMessage(msg, STATEMESSAGE, (void *)(&sd)))
       server->sendAll(msg);
     break;
+  case ADD_PASSENGER:
+    qDebug() << "ADD_PASSENGER";
+    model->addPassenger();
+    sd = model->states();
+    if (formMessage(msg, STATEMESSAGE, (void *)(&sd)))
+      server->sendAll(msg);
+    break;
   default:
     qDebug() << "unknown message" << msg;
     return;

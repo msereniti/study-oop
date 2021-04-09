@@ -3,6 +3,7 @@
 
 #include <QCloseEvent>
 #include <QLabel>
+#include <QTextEdit>
 #include <QWidget>
 
 #include "statedata.h"
@@ -10,11 +11,14 @@
 class TStateWindow : public QWidget {
   Q_OBJECT
 
-  QLabel *l4;
-  QLabel *l5;
-  QLabel *state1;
-  QLabel *l7;
-  QLabel *state2;
+  QLabel *timePassedLabel;
+  QLabel *timePassedValueLabel;
+  QLabel *rejectedPassengersLabel;
+  QLabel *rejectedPassengersValueLabel;
+  QLabel *beforeQueueLabel;
+  QLabel *beforeQueueValueLabel;
+  QLabel *queueLabel;
+  QTextEdit *queueTextEdit;
 
 public:
   TStateWindow(QWidget *parent = 0);

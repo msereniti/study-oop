@@ -1,27 +1,32 @@
 #include "controlwindow.h"
 
-TControlWindow::TControlWindow(bool m, QWidget *parent) : QWidget(parent) {
+TControlWindow::TControlWindow(bool realTimeMode, QWidget *parent)
+    : QWidget(parent) {
   setAttribute(Qt::WA_DeleteOnClose, true);
-  setFixedSize(200, 130);
+  setFixedSize(200, 140);
   setWindowTitle("Управление");
 
-  setEnabled(m);
+  setEnabled(realTimeMode);
 
-  b1 = new QPushButton("Сброс", this);
-  b1->setGeometry(10, 10, 180, 30);
-  connect(b1, SIGNAL(pressed()), this, SIGNAL(reset()));
-  b2 = new QPushButton("Одиночное событие", this);
-  b2->setGeometry(10, 40, 180, 30);
-  connect(b2, SIGNAL(pressed()), this, SIGNAL(step()));
-  b3 = new QPushButton("Автоматический режим", this);
-  b3->setGeometry(10, 70, 180, 30);
-  connect(b3, SIGNAL(pressed()), this, SLOT(switchMode()));
+  resetBtn = new QPushButton("Сброс", this);
+  resetBtn->setGeometry(10, 10, 180, 30);
+  connect(resetBtn, SIGNAL(pressed()), this, SIGNAL(reset()));
+  nextStepBtn = new QPushButton("Следующая секунда", this);
+  nextStepBtn->setGeometry(10, 40, 180, 30);
+  connect(nextStepBtn, SIGNAL(pressed()), this, SIGNAL(step()));
+  addPassengerBtn = new QPushButton("Добавить пассажира", this);
+  addPassengerBtn->setGeometry(10, 70, 180, 30);
+  connect(addPassengerBtn, SIGNAL(pressed()), this, SIGNAL(addPassenger()));
+  realTimeBtn = new QPushButton("Пошаговое время", this);
+  realTimeBtn->setGeometry(10, 100, 180, 30);
+  connect(realTimeBtn, SIGNAL(pressed()), this, SLOT(switchMode()));
 }
 
 TControlWindow::~TControlWindow() {
-  delete b3;
-  delete b2;
-  delete b1;
+  delete resetBtn;
+  delete nextStepBtn;
+  delete addPassengerBtn;
+  delete realTimeBtn;
 }
 
 void TControlWindow::closeEvent(QCloseEvent *event) {
@@ -30,9 +35,9 @@ void TControlWindow::closeEvent(QCloseEvent *event) {
 }
 
 void TControlWindow::switchMode() {
-  bool m = !b1->isEnabled();
-  b1->setEnabled(m);
-  b2->setEnabled(m);
-  b3->setText(m ? "Автоматический режим" : "Ручной режим");
-  emit mode(!m);
+  bool realTimeMode = nextStepBtn->isEnabled();
+  resetBtn->setEnabled(!realTimeMode);
+  nextStepBtn->setEnabled(!realTimeMode);
+  realTimeBtn->setText(realTimeMode ? "Реальное время" : "Пошаговое время");
+  emit mode(realTimeMode);
 }

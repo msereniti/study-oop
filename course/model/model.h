@@ -20,6 +20,7 @@ public:
 
   void init();
   void tact();
+  void addPassenger();
 
   inline TParamData &params() { return parameters; }
   inline TStateData &states() { return state; }

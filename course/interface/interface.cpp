@@ -87,6 +87,8 @@ void TInterface::controlWindowClosed() {
              SLOT(controlWindowClosed()));
   disconnect(controlWindow, SIGNAL(reset()), this, SIGNAL(reset()));
   disconnect(controlWindow, SIGNAL(step()), this, SIGNAL(step()));
+  disconnect(controlWindow, SIGNAL(addPassenger()), this,
+             SIGNAL(addPassenger()));
   disconnect(controlWindow, SIGNAL(mode(bool)), this, SIGNAL(mode(bool)));
   controlWindow = nullptr;
 }
@@ -121,6 +123,8 @@ void TInterface::openControlWindow() {
             SLOT(controlWindowClosed()));
     connect(controlWindow, SIGNAL(reset()), this, SIGNAL(reset()));
     connect(controlWindow, SIGNAL(step()), this, SIGNAL(step()));
+    connect(controlWindow, SIGNAL(addPassenger()), this,
+            SIGNAL(addPassenger()));
     connect(controlWindow, SIGNAL(mode(bool)), this, SIGNAL(mode(bool)));
     controlWindow->show();
   }

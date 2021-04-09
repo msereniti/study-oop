@@ -12,6 +12,7 @@ enum EEvents {
   STATEMESSAGE,
   RESET,
   TACT,
+  ADD_PASSENGER,
 };
 
 struct TEvents {
