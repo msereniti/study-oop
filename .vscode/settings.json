@@ -67,5 +67,6 @@
   "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}",
   "editor.defaultFormatter": "ms-vscode.cpptools",
   "C_Cpp.clang_format_style": "file",
-  "C_Cpp.clang_format_path": "path/to/.clang-format"
+  "C_Cpp.clang_format_path": "path/to/.clang-format",
+  "editor.tabSize": 2
 }
